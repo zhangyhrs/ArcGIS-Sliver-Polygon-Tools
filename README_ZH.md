@@ -15,6 +15,31 @@
 > **源代码：** [`SliverPolygonTools_ArcGIS10x_V1.4.pyt`](SliverPolygonTools_ArcGIS10x_V1.4.pyt)  
 > **运行环境：** ArcGIS Desktop 10.x / ArcMap / Python 2.7 / ArcPy
 
+## 运行效果
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <a href="assets/01_find_parameters.png"><img src="assets/01_find_parameters.png" alt="查找狭长细碎图斑参数界面" width="100%"></a><br>
+      <b>查找狭长细碎图斑参数界面</b>
+    </td>
+    <td width="50%" align="center">
+      <a href="assets/02_find_result.png"><img src="assets/02_find_result.png" alt="狭长细碎图斑识别结果" width="100%"></a><br>
+      <b>狭长细碎图斑识别结果</b>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <a href="assets/03_merge_parameters.png"><img src="assets/03_merge_parameters.png" alt="合并提取的狭长细碎图斑参数界面" width="100%"></a><br>
+      <b>合并提取的狭长细碎图斑参数界面</b>
+    </td>
+    <td width="50%" align="center">
+      <a href="assets/04_merge_result.png"><img src="assets/04_merge_result.png" alt="狭长细碎图斑合并结果" width="100%"></a><br>
+      <b>狭长细碎图斑合并结果</b>
+    </td>
+  </tr>
+</table>
+
 ## 工具箱
 
 - **1-查找狭长细碎图斑**
