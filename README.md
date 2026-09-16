@@ -1,51 +1,71 @@
 # ArcGIS Sliver Polygon Tools
 
-[中文说明](README_ZH.md)
+![Version](https://img.shields.io/badge/version-1.4-blue)
+![Platform](https://img.shields.io/badge/platform-ArcGIS%20Desktop%2010.x-2C7FB8)
+![Language](https://img.shields.io/badge/language-Python%202.7-3776AB?logo=python&logoColor=white)
+![Toolbox](https://img.shields.io/badge/toolbox-Python%20Toolbox-289C8E)
+![License](https://img.shields.io/badge/license-GPL--3.0-green)
 
-ArcGIS Desktop 10.x toolbox for identifying and merging sliver polygons.
+**English | [简体中文](README_ZH.md)**
 
-**Current version: V1.4**
+A Python Toolbox for **ArcGIS Desktop 10.x / ArcMap / Python 2.7** that identifies sliver polygons and merges reviewed sliver polygons into suitable adjacent polygons.
+
+Current version: **V1.4**.
+
+> **Source:** [`SliverPolygonTools_ArcGIS10x_V1.4.pyt`](SliverPolygonTools_ArcGIS10x_V1.4.pyt)  
+> **Environment:** ArcGIS Desktop 10.x / ArcMap / Python 2.7 / ArcPy
+
+## Toolbox
+
+- **1 - Find Sliver Polygons**
+- **2 - Merge Extracted Sliver Polygons**
 
 ## Features
 
 ### 1. Find Sliver Polygons
-The tool uses a two-stage rule: **scale conditions + shape conditions**.
 
-Scale indicators:
-- Area
+The identification tool uses a two-stage rule: **scale conditions + shape conditions**.
+
+**Scale indicators**
+- Polygon area
 - Minimum bounding rectangle width
 - Equivalent average width: `2 × Area / Perimeter`
 
-Shape indicators:
+**Shape indicators**
 - Length-width ratio: `L / W`
 - Compactness: `4πA / P²`
 - Shape index: `P / (2√(πA))`
 - Perimeter-area ratio: `P² / A`
 
-Only polygons satisfying both configured scale and shape rules are flagged, which helps reduce false positives for naturally elongated rivers and roads.
+A polygon is flagged only when both the configured scale and shape rules are satisfied. This helps reduce false positives for naturally elongated features such as rivers and roads.
 
 ### 2. Merge Extracted Sliver Polygons
-The merge tool uses two polygon inputs:
-1. Original DLTB
-2. Extracted and reviewed sliver polygons
 
-It spatially matches the extracted polygons back to the original layer, evaluates neighboring polygons, selects a target by configured rules, and outputs a complete modified DLTB.
+The merge tool takes two polygon inputs:
 
-Supported rules include longest shared boundary, target area, attribute consistency, target SQL filters, minimum shared boundary length, and minimum overlap percentage.
+1. **Original polygon layer (DLTB)**
+2. **Extracted and manually reviewed sliver polygons**
+
+The tool spatially matches the extracted polygons back to the original DLTB, analyzes polygon neighbors, selects a target based on configured rules, and writes a complete modified DLTB.
+
+Supported constraints include:
+- Longest shared boundary
+- Largest target area
+- Smallest target area
+- Attribute consistency
+- Target area range
+- Minimum shared boundary length
+- Minimum overlap percentage
 
 ## Recommended Workflow
 
-`Original DLTB → Find → Manual review → Merge → Modified DLTB`
+`Original DLTB → Identify → Manual review → Merge → Modified DLTB`
 
-## Requirements
+Manual review is recommended before batch geometry modification.
 
-- ArcGIS Desktop 10.x / ArcMap
-- Python 2.7
-- ArcPy
-- Polygon data
-- Projected coordinate system recommended for meter/m² thresholds
+## Default Parameters
 
-## Default Identification Parameters
+### Identification
 
 | Parameter | Default |
 |---|---:|
@@ -59,9 +79,7 @@ Supported rules include longest shared boundary, target area, attribute consiste
 | Perimeter-area ratio lower limit | 40 |
 | Shape rule | At least 2 conditions |
 
-These values are initial working defaults, not universal standards.
-
-## Merge Defaults
+### Merge
 
 | Parameter | Default |
 |---|---:|
@@ -71,15 +89,61 @@ These values are initial working defaults, not universal standards.
 | Minimum overlap with original polygon | 80% |
 | Merge into another sliver polygon | No |
 
+These values are initial working defaults rather than universal standards. Adjust them for project scale, data characteristics, and business requirements.
+
+## Installation
+
+1. Download `SliverPolygonTools_ArcGIS10x_V1.4.pyt`.
+2. Open ArcMap.
+3. In ArcToolbox or Catalog, choose **Add Toolbox**.
+4. Select the `.pyt` file.
+5. Open **Sliver Polygon Processing Toolbox V1.4**.
+
+## Requirements
+
+- ArcGIS Desktop 10.x / ArcMap
+- Python 2.7
+- ArcPy
+- Polygon data
+- A projected coordinate system is recommended when meter/m² thresholds are used.
+
 ## Notes
 
-- Input data are not modified directly; a new output dataset is written.
-- Review representative samples before batch processing.
-- Sliver thresholds should be adjusted for project scale and data characteristics.
+- The input dataset is not modified directly; the tool writes a new output dataset.
+- Test thresholds on representative samples before batch processing.
+- Select attribute consistency fields when target polygons must remain in the same land-use, ownership, or business class.
 - Features without a valid merge target are retained unchanged.
+- There is no universal sliver threshold for every project; parameters should be calibrated to the actual data.
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 
-GPL-3.0. See [LICENSE](LICENSE).
+Copyright (c) 2026 Zhang Y.H.
 
-Copyright © 2026 Zhang Y.H.
+This project is released under the **GNU General Public License v3.0 (GPL-3.0)**. See [LICENSE](LICENSE).
+
+ArcGIS, ArcMap and ArcPy are Esri product or technology names. This project is not affiliated with or endorsed by Esri.
+
+## Follow & Community
+
+Follow the WeChat official account **测绘地信** or join the Knowledge Planet community **测绘地理信息共享中心**.
+
+<table>
+  <tr>
+    <th width="50%">WeChat Official Account<br>测绘地信</th>
+    <th width="50%">Knowledge Planet<br>测绘地理信息共享中心</th>
+  </tr>
+  <tr>
+    <td align="center" valign="middle"><a href="assets/wechat-official-account.png"><img src="assets/wechat-official-account.png" alt="WeChat Official Account" height="150"></a></td>
+    <td align="center" valign="middle"><a href="assets/knowledge-planet.jpg"><img src="assets/knowledge-planet.jpg" alt="Knowledge Planet" height="150"></a></td>
+  </tr>
+</table>
+
+## Author
+
+**Zhang Y.H.** · GitHub [@zhangyhrs](https://github.com/zhangyhrs)
+
+Related projects: [SHP2KMZ Tool](https://github.com/zhangyhrs/SHP2KMZ_Tool) · [GeoStar Selector for QGIS](https://github.com/zhangyhrs/GeoStar-Selector-QGIS)
