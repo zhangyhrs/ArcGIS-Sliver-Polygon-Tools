@@ -1,23 +1,37 @@
 # ArcGIS 狭长细碎图斑识别与相邻合并工具
 
-[English](README.md)
+![Version](https://img.shields.io/badge/version-1.4-blue)
+![Platform](https://img.shields.io/badge/platform-ArcGIS%20Desktop%2010.x-2C7FB8)
+![Language](https://img.shields.io/badge/language-Python%202.7-3776AB?logo=python&logoColor=white)
+![Toolbox](https://img.shields.io/badge/toolbox-Python%20Toolbox-289C8E)
+![License](https://img.shields.io/badge/license-GPL--3.0-green)
 
-这是一个面向 **ArcGIS Desktop 10.x / ArcMap / Python 2.7** 的 Python Toolbox，用于批量识别狭长细碎图斑，并将人工确认后的狭长图斑按规则合并到合适的相邻图斑。
+**[English](README.md) | 简体中文**
 
-**当前版本：V1.4**
+面向土地调查、地籍调查和自然资源数据整理的 **ArcGIS Desktop 10.x 狭长细碎图斑识别与相邻合并 Python Toolbox**。
+
+当前版本 **V1.4**，包括“查找狭长细碎图斑”和“合并提取的狭长细碎图斑”两个工具。
+
+> **源代码：** [`SliverPolygonTools_ArcGIS10x_V1.4.pyt`](SliverPolygonTools_ArcGIS10x_V1.4.pyt)  
+> **运行环境：** ArcGIS Desktop 10.x / ArcMap / Python 2.7 / ArcPy
+
+## 工具箱
+
+- **1-查找狭长细碎图斑**
+- **2-合并提取的狭长细碎图斑**
 
 ## 主要功能
 
 ### 1. 查找狭长细碎图斑
 
-工具采用“**尺度条件 + 形状条件**”两级判定。
+工具采用“**尺度条件 + 形状条件**”两级判定方式。
 
-尺度条件：
+**尺度条件**
 - 图斑面积
 - 最小外接矩形宽度
 - 等效平均宽度：`2 × 面积 ÷ 周长`
 
-形状条件：
+**形状条件**
 - 长宽比：`L / W`
 - 紧凑度：`4πA / P²`
 - 形状指数：`P / (2√(πA))`
@@ -28,30 +42,30 @@
 ### 2. 合并提取的狭长细碎图斑
 
 合并工具采用两个输入：
-1. **原始面图层（DLTB）**
-2. **已经提取并确认的狭长细碎图斑**
 
-工具先将提取图斑与原始 DLTB 进行空间匹配，再分析邻接关系，并根据公共边界长度、目标面积、属性一致性等条件选择合并目标，最终输出修改后的完整 DLTB。
+1. **原始面图层（DLTB）**
+2. **已经提取并人工确认的狭长细碎图斑**
+
+工具先将提取图斑与原始 DLTB 进行空间匹配，再分析邻接关系，并依据公共边界长度、目标面积、属性一致性等条件选择合并目标，最终输出修改后的完整 DLTB。
+
+支持：
+- 公共边界最长
+- 目标面积最大
+- 目标面积最小
+- 属性字段一致
+- 目标面积范围
+- 最小公共边界长度
+- 狭长图斑与原始图斑最小重叠比例
 
 ## 推荐流程
 
 `原始 DLTB → 批量识别 → 人工复核 → 相邻合并 → 输出修改后的完整 DLTB`
 
-建议将工具识别结果作为疑似对象，人工确认后再进行批量合并。
+建议将自动识别结果作为疑似对象，人工确认后再进行批量合并。
 
-## 使用方法
+## 默认参数
 
-1. 下载 `SliverPolygonTools_ArcGIS10x_GBK_V1.4.pyt`。
-2. 打开 ArcMap。
-3. 在 ArcToolbox 或 Catalog 中选择 **Add Toolbox（添加工具箱）**。
-4. 选择下载的 `.pyt` 文件。
-5. 打开“狭长细碎图斑处理工具箱 V1.4”。
-
-工具箱包括：
-- **1-查找狭长细碎图斑**
-- **2-合并提取的狭长细碎图斑**
-
-## 查找工具默认参数
+### 查找工具
 
 | 参数 | 默认值 |
 |---|---:|
@@ -65,9 +79,7 @@
 | 周长面积比下限 | 40 |
 | 形状条件 | 至少满足 2 项 |
 
-以上为便于测试和使用的初始默认值，并不是固定业务标准。实际项目中应根据数据尺度、图斑特征和业务要求调整。
-
-## 合并工具默认参数
+### 合并工具
 
 | 参数 | 默认值 |
 |---|---:|
@@ -76,6 +88,16 @@
 | 合并目标优先规则 | 公共边界最长 |
 | 与原始图斑最小重叠比例 | 80% |
 | 允许合并到其他狭长图斑 | 否 |
+
+以上为初始默认值，并不是固定业务标准。实际项目中应结合数据尺度、图斑特征和业务要求调整。
+
+## 使用方法
+
+1. 下载 `SliverPolygonTools_ArcGIS10x_V1.4.pyt`。
+2. 打开 ArcMap。
+3. 在 ArcToolbox 或 Catalog 中选择 **Add Toolbox（添加工具箱）**。
+4. 选择 `.pyt` 文件。
+5. 打开“狭长细碎图斑处理工具箱 V1.4”。
 
 ## 运行环境
 
@@ -93,19 +115,35 @@
 - 未找到符合条件合并目标的狭长图斑将保留原状。
 - 狭长细碎图斑不存在适用于所有项目的统一阈值，应结合具体数据确定。
 
-## 版本说明
+## 更新记录
 
-### V1.4
-- 合并工具调整为“双输入”模式：原始 DLTB + 已提取狭长图斑。
-- 增加提取图斑与原始 DLTB 的空间重叠匹配。
-- 合并完成后输出完整修改 DLTB。
-- 支持目标面积、公共边界、属性一致和重叠比例等约束。
-- 保留“尺度条件 + 形状条件”两级识别方法。
+详见 [CHANGELOG.md](CHANGELOG.md)。
 
-详细记录见 [CHANGELOG.md](CHANGELOG.md)。
+## 许可证与版权
 
-## 开源许可
+Copyright (c) 2026 Zhang Y.H.
 
-本项目采用 GPL-3.0 许可证，详见 [LICENSE](LICENSE)。
+本项目采用 **GNU General Public License v3.0 (GPL-3.0)**，详见 [LICENSE](LICENSE)。
 
-Copyright © 2026 Zhang Y.H.
+ArcGIS、ArcMap、ArcPy 为 Esri 相关产品或技术名称，本项目与 Esri 无隶属或官方合作关系。
+
+## 关注与交流
+
+欢迎关注微信公众号 **测绘地信**，也可访问知识星球 **测绘地理信息共享中心**。
+
+<table>
+  <tr>
+    <th width="50%">微信公众号<br>测绘地信</th>
+    <th width="50%">知识星球<br>测绘地理信息共享中心</th>
+  </tr>
+  <tr>
+    <td align="center" valign="middle"><a href="assets/wechat-official-account.png"><img src="assets/wechat-official-account.png" alt="微信公众号：测绘地信" height="150"></a></td>
+    <td align="center" valign="middle"><a href="assets/knowledge-planet.jpg"><img src="assets/knowledge-planet.jpg" alt="知识星球：测绘地理信息共享中心" height="150"></a></td>
+  </tr>
+</table>
+
+## 作者
+
+**Zhang Y.H.** · GitHub [@zhangyhrs](https://github.com/zhangyhrs)
+
+相关工具：[SHP2KMZ Tool](https://github.com/zhangyhrs/SHP2KMZ_Tool) · [GeoStar Selector for QGIS](https://github.com/zhangyhrs/GeoStar-Selector-QGIS)
