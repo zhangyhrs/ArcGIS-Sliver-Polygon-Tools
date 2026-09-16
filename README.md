@@ -15,6 +15,31 @@ Current version: **V1.4**.
 > **Source:** [`SliverPolygonTools_ArcGIS10x_V1.4.pyt`](SliverPolygonTools_ArcGIS10x_V1.4.pyt)  
 > **Environment:** ArcGIS Desktop 10.x / ArcMap / Python 2.7 / ArcPy
 
+## Screenshots
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <a href="assets/01_find_parameters.png"><img src="assets/01_find_parameters.png" alt="Find Sliver Polygons Parameters" width="100%"></a><br>
+      <b>Find Sliver Polygons - Parameters</b>
+    </td>
+    <td width="50%" align="center">
+      <a href="assets/02_find_result.png"><img src="assets/02_find_result.png" alt="Sliver Polygon Identification Result" width="100%"></a><br>
+      <b>Sliver Polygon Identification Result</b>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <a href="assets/03_merge_parameters.png"><img src="assets/03_merge_parameters.png" alt="Merge Extracted Sliver Polygons Parameters" width="100%"></a><br>
+      <b>Merge Extracted Sliver Polygons - Parameters</b>
+    </td>
+    <td width="50%" align="center">
+      <a href="assets/04_merge_result.png"><img src="assets/04_merge_result.png" alt="Sliver Polygon Merge Result" width="100%"></a><br>
+      <b>Sliver Polygon Merge Result</b>
+    </td>
+  </tr>
+</table>
+
 ## Toolbox
 
 - **1 - Find Sliver Polygons**
