@@ -154,16 +154,18 @@ ArcGIS, ArcMap and ArcPy are Esri product or technology names. This project is n
 
 ## Follow & Community
 
-Follow the WeChat official account **测绘地信** or join the Knowledge Planet community **测绘地理信息共享中心**.
+Follow the WeChat official account **测绘地信**, use the WeChat Mini Program **测绘地信**, or join the Knowledge Planet community **测绘地理信息共享中心**.
 
 <table>
   <tr>
-    <th width="50%">WeChat Official Account<br>测绘地信</th>
-    <th width="50%">Knowledge Planet<br>测绘地理信息共享中心</th>
+    <th width="33%">WeChat Official Account<br>微信公众号：测绘地信</th>
+    <th width="33%">WeChat Mini Program<br>微信小程序：测绘地信</th>
+    <th width="33%">Knowledge Planet<br>知识星球：测绘地理信息共享中心</th>
   </tr>
   <tr>
-    <td align="center" valign="middle"><a href="assets/wechat-official-account.png"><img src="assets/wechat-official-account.png" alt="WeChat Official Account" height="150"></a></td>
-    <td align="center" valign="middle"><a href="assets/knowledge-planet.jpg"><img src="assets/knowledge-planet.jpg" alt="Knowledge Planet" height="150"></a></td>
+    <td align="center" valign="middle"><img src="https://raw.githubusercontent.com/zhangyhrs/GeoStar-Selector-QGIS/main/assets/wechat-official-account.png" alt="微信公众号：测绘地信" height="150"></td>
+    <td align="center" valign="middle"><img src="https://raw.githubusercontent.com/zhangyhrs/GeoStar-Selector-QGIS/main/assets/wechat-mini-program.jpg" alt="微信小程序：测绘地信" height="150"></td>
+    <td align="center" valign="middle"><img src="https://raw.githubusercontent.com/zhangyhrs/GeoStar-Selector-QGIS/main/assets/knowledge-planet.jpg" alt="知识星球：测绘地理信息共享中心" height="150"></td>
   </tr>
 </table>
 
